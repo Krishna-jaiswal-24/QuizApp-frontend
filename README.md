@@ -1,8 +1,61 @@
-# React + Vite
+# Language Learning App - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Language Learning App frontend repository! This application is designed to help users learn languages through interactive quizzes.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Folder Structure](#folder-structure)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
+This frontend repository is built using React and is part of the Language Learning App. It provides a user interface for registering, logging in, and taking language quizzes. The app communicates with a backend server to fetch quiz data and handle user authentication.
+
+## Features
+- User authentication (Login and Register)
+- Interactive language quizzes with random questions
+- Quiz result display with detailed information
+- Responsive and user-friendly design
+
+## Getting Started
+To run the frontend locally, follow these steps:
+
+1. Clone this repository:
+
+    ```bash
+    git clone <repository-url>
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    cd language-learning-app-frontend
+    npm install
+    ```
+
+3. Start the development server:
+
+    ```bash
+    npm start
+    ```
+
+4. Open your browser and navigate to `http://localhost:3000`.
+
+## Folder Structure
+language-learning-app-frontend/
+│
+├── public/ # Public assets and HTML template
+├── src/ # Source code
+│ ├── components/ # Reusable React components
+│ ├── pages/ # Page-level components
+│ ├── utils/ # Utility functions and configurations
+│ ├── App.jsx # Main application component
+│ ├── index.js # Entry point
+│ └── ... # Other configuration files
+│
+├── .gitignore # Git ignore file
+├── package.json # NPM package file
+└── README.md # Project documentation
