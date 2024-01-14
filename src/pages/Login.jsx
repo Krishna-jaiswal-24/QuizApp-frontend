@@ -36,7 +36,7 @@ const Login = () => {
       console.log(accessToken);
       localStorage.setItem("accessToken", accessToken);
       console.log(localStorage.getItem("accessToken"));
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       // Handle error, e.g., display an error message
       console.error("Login failed:", error.response.data);

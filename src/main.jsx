@@ -7,10 +7,16 @@ import Login from "./pages/login.jsx";
 import Register from "./pages/Register.jsx";
 import QuizResultPage from "./pages/QuizResultPage.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
+import RootPage from "./pages/RootPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <RootPage />,
+  },
+
+  {
+    path: "/home",
     element: <App />,
   },
   {

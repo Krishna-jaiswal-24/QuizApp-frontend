@@ -1,6 +1,6 @@
 // QuizPage.js
-import React, { useState } from "react";
-import quizData from "../assets/quizData.js";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import QuizResultPage from "./QuizResultPage.jsx";
 
 const QuizPage = () => {
@@ -10,6 +10,26 @@ const QuizPage = () => {
   const [showWrongMessage, setShowWrongMessage] = useState(false);
   const [score, setScore] = useState(0);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const [quizData, setQuizData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/exercises/get-all-questions")
+      .then((response) => {
+        const allQuestions = response.data.data || [];
+
+        // Shuffle the array of questions
+        const shuffledQuestions = allQuestions.sort(() => Math.random() - 0.5);
+
+        // Take the first 20 questions
+        const selectedQuestions = shuffledQuestions.slice(0, 20);
+
+        setQuizData(selectedQuestions);
+      })
+      .catch((error) => {
+        console.error(`Error fetching data: ${error}`);
+      });
+  }, []);
 
   const handleAnswerClick = (selectedAnswer) => {
     const correctAnswer = quizData[currentQuestion].correctAnswer;
@@ -62,13 +82,13 @@ const QuizPage = () => {
         />
       ) : (
         // Display quiz questions
-        <div className="w-96 p-8 mt-48  bg-white rounded-md shadow-md text-center">
+        <div className="w-96 p-8 mt-48 bg-white rounded-md shadow-md text-center">
           <h2 className="text-2xl font-bold mb-4">
             Quiz Question {currentQuestion + 1}
           </h2>
-          <p>{quizData[currentQuestion].question}</p>
+          <p>{quizData[currentQuestion]?.text}</p>
           <div className="mt-4">
-            {quizData[currentQuestion].options.map((option, index) => (
+            {quizData[currentQuestion]?.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswerClick(option)}
@@ -86,7 +106,7 @@ const QuizPage = () => {
           <div className="flex justify-between mt-4">
             <button
               onClick={goToPrevQuestion}
-              className=" bg-red-400 text-white py-2 px-4 rounded-lg"
+              className="bg-red-400 text-white py-2 px-4 rounded-lg"
             >
               Previous Question
             </button>

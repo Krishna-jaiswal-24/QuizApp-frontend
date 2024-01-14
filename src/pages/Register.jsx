@@ -1,8 +1,10 @@
 // src/components/Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const Register = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -25,6 +27,7 @@ const Register = () => {
 
       // Handle success, e.g., redirect or show a success message
       console.log('Registration successful:', response.data);
+    navigate("/home")
     } catch (error) {
       // Handle error, e.g., display an error message
       console.error('Registration failed:', error.response.data);
